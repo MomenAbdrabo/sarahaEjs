@@ -1,0 +1,81 @@
+<%- include('./shared/header.ejs') %>
+<body>
+  <div class="container">  
+    <div class="my-5 p-5 text-center">
+      <form class="w-75 m-auto" action="auth/SignUp" method="post">
+
+
+          <div class="my-2">
+
+            <h2 class="text-center text-success"> join us now </h2>
+
+          </div>  
+          <div class="form-group my-2">
+            <input value='<%= oldData?.userName %>' class="form-control"  type="text", name="userName" placeholder="UserName" required>
+            <% if (validationErr?.includes('userName')) { %>
+              <div class=" border border-danger text-center my-2">
+
+                <p class="m-2">user name not valid</p>
+  
+              </div>
+            <% } %>
+          </div>
+          <div class="form-group my-2">
+            <input value='<%= oldData?.email %>' class="form-control"  type="email", name="email" placeholder="Email" required>
+            <% if (emailErr) { %>
+              <div class=" border border-danger text-center my-2">
+
+                <p><%= emailErr %></p>
+  
+              </div>
+            <% } %>
+            
+            <% if (validationErr?.includes('email')) { %>
+              <div class=" border border-danger text-center my-2">
+
+                <p>'email not valid'</p>
+  
+              </div>
+            <% } %>
+          
+          </div>
+
+          <div class="form-group my-2">
+            <input class="form-control" value='<%= oldData?.password %>' type="password", name="password" placeholder="Password"required>
+            <% if (validationErr?.includes('password')) { %>
+              <div class=" border border-danger text-center my-2">
+
+                <p>'password not validate'</p>
+  
+              </div>
+            <% } %>
+         
+          </div>
+
+          <div class="form-group my-2">
+            <input class="form-control" value='<%=oldData?.Cpassword%>' type="password", name="Cpassword" placeholder="CPassword" required>
+            <% if (validationErr?.includes('Cpassword')) { %>
+              <div class=" border border-danger text-center my-2">
+
+                <p>'confirm password not validate'</p>
+  
+              </div>
+            <% } %>
+         
+          </div>
+
+          <div class="form-group my-2">
+          
+            <button class="btn btn-outline-success w-100">Sign Up</button>  
+            <p>Already have account ? <a href="/auth/login">Login</a></p>
+            </div>
+          
+
+      </form>
+    </div>
+</div>
+<%- include('./shared/scripts.ejs') %>
+
+    <script src="./shared/js/signUp.js"></script>
+</body>
+</html>

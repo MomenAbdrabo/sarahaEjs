@@ -1,0 +1,53 @@
+<%- include('./shared/header.ejs') %>
+<body>
+  <div class="container">  
+    <div class="my-5 p-5 text-center">
+      <form class="w-75 m-auto" action="/auth/login" method="post">
+
+
+          <div class="my-2">
+
+            <h2 class="text-center text-success"> welcome  </h2>
+
+          </div>  
+        
+          <div class="form-group my-2">
+            <input class="form-control" value='<%= oldData?.email %>'  type="email", name="email" placeholder="Email" required>
+           
+            <% if (emailErr) { %>
+              <div class="alert alert-danger text-center my-2">
+
+                <p><%= emailErr %></p>
+  
+              </div>
+            <% } %>
+         
+         
+          </div>
+
+          <div class="form-group my-2">
+            <input class="form-control" value='<%= oldData?.password %>' type="password", name="password" placeholder="Password"required>
+            <% if (PasswordErr) { %>
+              <div class="alert alert-danger text-center my-2">
+
+                <p><%= PasswordErr %></p>
+  
+              </div>
+            <% } %>
+         
+          </div>
+
+          <div class="form-group my-2">
+            <button class="btn btn-outline-success w-100">login</button>  
+            <p>don't have account ? <a href="/auth">Sign Up</a></p>
+            </div>
+          
+
+      </form>
+    </div>
+</div>
+<%- include('./shared/scripts.ejs') %>
+
+    <script src="./shared/js/signUp.js"></script>
+</body>
+</html>

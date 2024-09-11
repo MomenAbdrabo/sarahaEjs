@@ -1,0 +1,35 @@
+<%- include('./shared/header.ejs') %>
+<body>
+  <div class="container">  
+    
+    <div class="my-5 p-5 text-center border border-success">
+  <img class="profilePic" src="<%= user?.profilePic?.secure_url %>">
+     <h2 class="my-2"><%= user?.userName %></h2>
+         </div>
+    <div class="my-5 p-5 text-center border border-success">
+        <form action="/message/<%= user?.id%>/send" method="post">
+          <h3>Make your message positive</h3>
+          <div class="form-floating">
+
+            <textarea class="form-control my-2" name="message" placeholder="Leave a message here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">message</label>
+            <button class="btn btn-success" type="submit">send</button>
+            <% if (findUser) { %>
+
+              <p class="alert alert-danger my-2 text-center" ><%= findUser %></p>
+             
+            <% } %>
+            <% if (thankMessage) { %>
+
+              <p class="text-success my-2 text-center"><%= thankMessage %></p>
+             
+            <% } %>
+          </div>
+        </form>
+    </div>
+</div>
+<%- include('./shared/scripts.ejs') %>
+
+    <script src="./shared/js/signUp.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+body{
+    color: aliceblue;
+background-color: rgb(6, 6, 6);
+}
+
+.profilePic{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}

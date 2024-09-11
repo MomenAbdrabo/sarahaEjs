@@ -1,0 +1,56 @@
+<%- include('./shared/header.ejs') %>
+<body>
+  <div class="container">  
+    
+    <div class="text-end">
+      <a href="/auth/logout" class="btn btn-danger m-2">logout</a>
+    </div>
+
+    <div class="my-5 p-5 text-center border border-success">                            
+  <img class="profilePic" src="<%=user?.profilePic?.secure_url%>">
+     <h2>Hello mr:<%= user?.userName %></h2>
+     
+     <a href='/user/<%=user?.id%>/ShareProfile'  class="btn btn-success my-2">Share Profile</a>
+    </div>
+
+
+    <div class="my-5 p-5 text-center border border-success">
+      <h2>update profile pic</h2>
+
+      <form action="/user/profilePic" method="post" enctype="multipart/form-data">
+       
+        <div class="input-group">
+          <input type="file" name="image" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+          <button class="btn btn-outline-secondary"  type="submit" id="inputGroupFile04">Button</button>
+        </div>
+      </form>
+
+     </div>
+
+                              <!-- show message section -->
+     <div class="my-5 p-5 text-center border border-success">
+      <h2>mesages for you  </h2>
+        <% for( let index = 0; index < messages.length; index++ ) { %>
+
+          <div class="row  justify-content-center align-items-center my-2 text-center" >
+            <div class="col-md-4 p-2">
+              <div class="p-2 my-2 border border-success">
+                  <p class="p-2 my-1 "><%=messages[index]?.message%></p>
+                  <p class="p-2 my-1 text-end text-success"><%=messages[index]?.createdAt%>></p>
+                  <a class="btn btn-outline btn-danger" href="/message/<%=messages[index]._id%>/delete">Delete message</a>
+              </div>
+    
+            </div>
+    
+         </div>
+        
+        <% } %>
+     </div>
+
+
+</div>
+<%- include('./shared/scripts.ejs') %>
+
+    <script src="./shared/js/signUp.js"></script>
+</body>
+</html>
